@@ -6,7 +6,7 @@
 /*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/06 17:43:44 by helferna         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:51:33 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ t_cub	*cub(void)
 
 int	verify_path(char *map_path)
 {
-	int        i;
-
 	if (strlen(map_path) <= 4)
 	    return (0);
 	if (strncmp(strrchr(map_path, '.'), ".cub", 5) == 0)
@@ -38,7 +36,7 @@ void	init_cub3d(char **argv)
 
 void 	run_cub3d(void)
 {
-	
+	return ;
 }
 
 int	main(int argc, char **argv)
