@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:47 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/11 15:54:11 by helferna         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:26:37 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,16 @@ typedef struct s_player{
 }	t_player;
 
 typedef struct    s_cub3d{
+	void		*img;
 	void		*mlx;
 	void		*win;
 	char		**map;
 	int			map_width;
 	int			map_height;
-	t_player	*player;
+	t_player	player;
 	int			map_fd;
 }	t_cub;
 
 t_cub	*cub(void);
+int		close_window(void);
+char	**read_map(void);

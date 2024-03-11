@@ -6,7 +6,7 @@
 #    By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/08 17:25:02 by helferna          #+#    #+#              #
-#    Updated: 2024/03/11 11:00:03 by helferna         ###   ########.fr        #
+#    Updated: 2024/03/11 17:04:03 by helferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC    = @gcc
 FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 LFT   = libft/libft.a
 INC   = -I./libft -I.mlx -I./mlx_macos -I./include
-SRC   = src/main.c
+SRC   = src/main.c src/map/read_map.c src/utils/utils.c
 OBJ   = $(patsubst src/%.c, obj/%.o, $(SRC))
 
 ifeq ($(OS), Darwin)
