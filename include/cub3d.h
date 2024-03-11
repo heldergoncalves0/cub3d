@@ -6,7 +6,7 @@
 /*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:47 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/11 11:17:53 by helferna         ###   ########.fr       */
+/*   Updated: 2024/03/11 13:26:34 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@
 # ifdef __linux__
 #  include <X11/keysym.h>
 #  include <X11/X.h>
+# endif
+
+# ifdef __APPLE__
+#  define ESCAPE 53
+#  define W 13
+#  define S 1
+#  define A 0
+#  define D 2
+#  define LEFT 123
+#  define RIGHT 124
+#  define UP 126
+#  define DOWN 125
 # endif
 
 # ifdef __linux__
