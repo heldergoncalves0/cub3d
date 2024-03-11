@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:47 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/11 13:26:34 by helferna         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:54:11 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # include <stdlib.h>
 # include <math.h>
 # include <string.h>
-# include "../minilibx-linux/mlx.h"
+# include <fcntl.h>
+# include "../libft/libft.h"
 
 # ifdef __linux__
 #  include <X11/keysym.h>
@@ -22,6 +23,7 @@
 # endif
 
 # ifdef __APPLE__
+# include "../mlx_macos/mlx.h"
 #  define ESCAPE 53
 #  define W 13
 #  define S 1
@@ -34,6 +36,7 @@
 # endif
 
 # ifdef __linux__
+# include "../minilibx-linux/mlx.h"
 #  define ESCAPE 65307
 #  define W 119
 #  define S 115
@@ -45,10 +48,19 @@
 #  define DOWN 65364
 # endif
 
+typedef struct s_player{
+	int	p_x;
+	int p_y;
+}	t_player;
+
 typedef struct    s_cub3d{
-	void	*mlx;
-	void	*win;
-	char	**map;
+	void		*mlx;
+	void		*win;
+	char		**map;
+	int			map_width;
+	int			map_height;
+	t_player	*player;
+	int			map_fd;
 }	t_cub;
 
 t_cub	*cub(void);
