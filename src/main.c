@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/11 17:32:14 by helferna         ###   ########.fr       */
+/*   Updated: 2024/03/11 19:59:30 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,14 @@ void find_player_position(void)
 	}
 }
 
+void	my_mlx_pixel_put(t_image *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
 void	draw_square(int size_x, int size_y, int color)
 {
 	int i;
@@ -68,7 +76,7 @@ void	draw_square(int size_x, int size_y, int color)
 		j = 0;
 		while (j < 32)
 		{
-			mlx_pixel_put(cub()->mlx, cub()->img, i + size_x, j + size_y, color);
+			my_mlx_pixel_put(&cub()->img, i + size_x, j + size_y, color);
 			j++;
 		}
 		i++;
@@ -86,10 +94,12 @@ void	draw_map(void)
 		j = 0;
 		while (j < cub()->map_width)
 		{
+			int tileX = j * 32;
+            int tileY = i * 32;
 			if (cub()->map[i][j] == 1)
-				draw_square(i * 32, j * 32, 0XFF0000);
+				draw_square(tileX, tileY, 0XFF0000);
 			else
-				draw_square(i * 32, j * 32, 0X000000);
+				draw_square(tileX, tileY, 0X000000);
 			j++; 
 		}
 		i++;
@@ -105,19 +115,12 @@ void	init_cub3d(char **argv)
 	find_player_position();
 }
 
-void	init_mlx(void)
+int	game_loop(void)
 {
-	cub()->mlx = mlx_init();
-	cub()->win = mlx_new_window(cub()->mlx, 1024, 512, "Cub3d");
-	cub()->img = mlx_new_image(cub()->mlx, 1024, 512);
-	mlx_put_image_to_window(cub()->mlx, cub()->win, cub()->img, 0, 0);
-}
-
-void 	run_cub3d(void)
-{
-	init_mlx();
 	draw_map();
-	return ;
+	mlx_put_image_to_window(cub()->mlx, cub()->win, cub()->img.img, 0, 0);
+	mlx_destroy_image(cub()->mlx, cub()->img.img);
+	return (0);
 }
 
 int	handle_input(int keysym)
@@ -127,13 +130,24 @@ int	handle_input(int keysym)
 	return (0);
 }
 
+void 	run_cub3d(void)
+{
+	cub()->mlx = mlx_init();
+	cub()->win = mlx_new_window(cub()->mlx, 1024, 512, "Cub3d");
+	cub()->img.img = mlx_new_image(cub()->mlx, 1024, 512);
+	cub()->img.addr = mlx_get_data_addr(cub()->img.img, &cub()->img.bits_per_pixel, &cub()->img.line_length, &cub()->img.endian);
+	mlx_loop_hook(cub()->mlx, &game_loop, NULL);
+	mlx_hook(cub()->win, 2, 1L << 0, &handle_input, cub());
+	//mlx_put_image_to_window(cub()->mlx, cub()->win, cub()->img, 0, 0);
+	mlx_loop(cub()->mlx);
+}
+
+
 int	main(int argc, char **argv)
 {
 	if (!argv[1] || argc > 2 || !verify_path(argv[1]))
 	    return (0);
     init_cub3d(argv);
     run_cub3d();
-	mlx_hook(cub()->win, 2, 1L << 0, &handle_input, cub());
-	mlx_loop(cub()->mlx);
     return (0);
 }
