@@ -6,14 +6,14 @@
 /*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:00:24 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/11 17:00:45 by helferna         ###   ########.fr       */
+/*   Updated: 2024/03/12 11:29:05 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	close_window(void)
+int	close_window(t_cub *cub)
 {
-	mlx_destroy_window(cub()->mlx, cub()->win);
+	mlx_destroy_window(cub->mlx, cub->win);
 	exit (0);
 }
