@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/12 12:12:13 by helferna         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:02:00 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,32 +50,32 @@ void find_player_position(t_cub *cub)
 	}
 }
 
-// void	my_mlx_pixel_put(t_image *data, int x, int y, int color)
-// {
-// 	char	*dst;
-
-// 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-// 	*(unsigned int*)dst = color;
-// }
-
-void	img_pix_put(t_image *img, int x, int y, int color)
+void	my_mlx_pixel_put(t_image *data, int x, int y, int color)
 {
-    char    *pixel;
-    int		i;
+	char	*dst;
 
-    i = img->bits_per_pixel - 8;
-    pixel = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-    while (i >= 0)
-    {
-        /* big endian, MSB is the leftmost bit */
-        if (img->endian != 0)
-            *pixel++ = (color >> i) & 0xFF;
-        /* little endian, LSB is the leftmost bit */
-        else
-            *pixel++ = (color >> (img->bits_per_pixel - 8 - i)) & 0xFF;
-        i -= 8;
-    }
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
 }
+
+// void	img_pix_put(t_image *img, int x, int y, int color)
+// {
+//     char    *pixel;
+//     int		i;
+
+//     i = img->bits_per_pixel - 8;
+//     pixel = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+//     while (i >= 0)
+//     {
+//         /* big endian, MSB is the leftmost bit */
+//         if (img->endian != 0)
+//             *pixel++ = (color >> i) & 0xFF;
+//         /* little endian, LSB is the leftmost bit */
+//         else
+//             *pixel++ = (color >> (img->bits_per_pixel - 8 - i)) & 0xFF;
+//         i -= 8;
+//     }
+// }
 
 void	draw_square(t_image *img, int size_x, int size_y, int color)
 {
@@ -88,8 +88,9 @@ void	draw_square(t_image *img, int size_x, int size_y, int color)
 		j = 0;
 		while (j < 32)
 		{
-			// my_mlx_pixel_put(&cub->img, i + size_x, j + size_y, color);
-			img_pix_put(img, j + size_y, i + size_x, color);
+			// printf("test: %d %d\n", i + size_x, j + size_y);
+			my_mlx_pixel_put(img, i + size_x, j + size_y, color);
+			// img_pix_put(img, j + size_x, i + size_y, color);
 			j++;
 		}
 		i++;
@@ -109,7 +110,7 @@ void	draw_map(t_cub *cub)
 		{
 			int tileX = j * 32;
             int tileY = i * 32;
-			if (cub->map[i][j] == 1)
+			if (cub->map[i][j] == '1')
 				draw_square(&cub->img, tileX, tileY, 0XFF0000);
 			else
 				draw_square(&cub->img, tileX, tileY, 0X000000);
@@ -130,6 +131,7 @@ void	init_cub3d(t_cub *cub, char **argv)
 static int	game_loop(t_cub *cub)
 {
 	draw_map(cub);
+	//my_mlx_pixel_put(&cub->img, 1, 1, 0XFF0000);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
 	return (0);
 }
@@ -148,12 +150,13 @@ void	run_cub3d(t_cub *cub)
 	cub->img.img = mlx_new_image(cub->mlx, 1024, 512);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, \
 										&cub->img.line_length, &cub->img.endian);
-	mlx_loop_hook(cub->mlx, &game_loop, &cub);
+	// game_loop(cub);
+	mlx_loop_hook(cub->mlx, &game_loop, cub);
 	//mlx_key_hook(cub->mlx, &handle_input, &cub);
 	mlx_loop(cub->mlx);
-	mlx_destroy_image(cub->mlx, cub->img.img);
-	mlx_destroy_display(cub->mlx);
-	free(cub->mlx);
+	//mlx_destroy_image(cub->mlx, cub->img.img);
+	//mlx_destroy_window(cub->mlx, cub->win);
+	//free(cub->mlx);
 }
 
 
