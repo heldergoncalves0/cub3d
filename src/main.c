@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/13 13:15:06 by helferna         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:31:24 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ void	init_player(t_cub *cub)
 {
 	cub->player.pixel_x = cub->player.p_x * TILE_SIZE + TILE_SIZE / 2;
 	cub->player.pixel_y = cub->player.p_y * TILE_SIZE + TILE_SIZE / 2;
-	cub->player.angle = M_PI;
+	cub->player.angle = PI;
 }
 
 void	init_cub3d(t_cub *cub, char **argv)

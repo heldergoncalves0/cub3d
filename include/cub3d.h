@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:47 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/12 17:26:14 by helferna         ###   ########.fr       */
+/*   Updated: 2024/03/14 20:18:09 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@
 #define FOV 60
 #define PLAYER_SPEED 2
 
+typedef struct	s_ray{
+	float	angle;
+	int		distance;
+}	t_ray;
+
 typedef struct s_player{
 	int		pixel_x;
 	int		pixel_y;
@@ -73,6 +78,7 @@ typedef struct	s_image {
 
 typedef struct    s_cub3d{
 	t_image		img;
+	t_ray		ray;
 	void		*mlx;
 	void		*win;
 	char		**map;
@@ -86,3 +92,6 @@ t_cub	*cub(void);
 int		close_window(t_cub	*cub);
 char	**read_map(t_cub	*cub);
 void	move_player_up(t_cub *cub);
+void	shoot_rays(t_cub *cub);
+void	render_wall(t_cub *cub, int ray);
+
