@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/12 13:17:18 by helferna         ###   ########.fr       */
+/*   Updated: 2024/03/13 13:15:06 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,27 @@ void	draw_square(t_image *img, int size_x, int size_y, int color)
 	}
 }
 
+void	draw_player(t_cub *cub)
+{
+	int playerSize = TILE_SIZE / 2;
+	int color = 0x00FF00;
+
+	int i;
+	int j;
+
+	i = 0;
+	while (i < TILE_SIZE / 2)
+	{
+		j = 0;
+		while (j < TILE_SIZE / 2)
+		{
+			img_pix_put(&cub->img, j + cub->player.pixel_x - playerSize / 2, i + cub->player.pixel_y - playerSize / 2, color);
+			j++;
+		}
+		i++;
+	}
+}
+
 void	draw_map(t_cub *cub)
 {
 	int i;
@@ -104,18 +125,21 @@ void	draw_map(t_cub *cub)
 		j = 0;
 		while (j < cub->map_width)
 		{
-			int tileX = j * 32;
-			int tileY = i * 32;
 			if (cub->map[i][j] == '1')
-				draw_square(&cub->img, tileX, tileY, 0XFF0000);
-			else if (cub->map[i][j] == 'N')
-				draw_square(&cub->img, tileX, tileY, 0XFFFFFF);
+				draw_square(&cub->img, j * 32, i * 32, 0XFF0000);
 			else
-			    draw_square(&cub->img, tileX, tileY, 0X000000);
+				draw_square(&cub->img, j * 32, i * 32, 0X000000);
 			j++; 
 		}
 		i++;
 	}
+}
+
+void	init_player(t_cub *cub)
+{
+	cub->player.pixel_x = cub->player.p_x * TILE_SIZE + TILE_SIZE / 2;
+	cub->player.pixel_y = cub->player.p_y * TILE_SIZE + TILE_SIZE / 2;
+	cub->player.angle = M_PI;
 }
 
 void	init_cub3d(t_cub *cub, char **argv)
@@ -124,12 +148,69 @@ void	init_cub3d(t_cub *cub, char **argv)
 	cub->map = read_map(cub);
 	get_width_heigth(cub);
 	find_player_position(cub);
+	init_player(cub);
+}
+
+void	move_player(t_cub *cub, double move_x, double move_y)
+{
+	int map_x;
+	int map_y;
+	int new_x, new_y;
+
+	new_x = roundf(cub->player.pixel_x + move_x);
+	new_y = roundf(cub->player.pixel_y + move_y);
+	map_x = new_x / TILE_SIZE;
+	map_y = new_y / TILE_SIZE;
+
+	if (cub->map[map_y][map_x] != '1' && \
+ 		(cub->map[map_y][cub->player.pixel_x / TILE_SIZE] != '1' && \
+			cub->map[cub->player.pixel_y / TILE_SIZE][map_x] != '1'))
+	{
+		cub->player.pixel_x = new_x;
+		cub->player.pixel_y = new_y;
+	}
+}
+
+void	hook(t_cub *cub, double move_x, double move_y)
+{
+	if (cub->player.r_l == 1)
+	{
+		move_x = cos(cub->player.angle) * PLAYER_SPEED;
+		move_y = sin(cub->player.angle) * PLAYER_SPEED;
+	}
+	if (cub->player.r_l == -1)
+	{
+		move_x = -cos(cub->player.angle) * PLAYER_SPEED;
+		move_y = -sin(cub->player.angle) * PLAYER_SPEED;
+	}
+	if (cub->player.u_d == 1)
+	{
+		move_x = -sin(cub->player.angle) * PLAYER_SPEED;
+		move_y = cos(cub->player.angle) * PLAYER_SPEED;
+	}
+	if (cub->player.u_d == -1)
+	{
+		move_x = sin(cub->player.angle) * PLAYER_SPEED;
+		move_y = -cos(cub->player.angle) * PLAYER_SPEED;
+	}
+	move_player(cub, move_x, move_y);
 }
 
 static int	game_loop(t_cub *cub)
 {
 	draw_map(cub);
+	hook(cub, 0, 0);
+	draw_player(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
+	return (0);
+}
+
+static int 	release(int keysym, t_cub *cub)
+{
+	if (keysym == W || keysym == S)
+		cub->player.u_d = 0;
+	if (keysym == D || keysym == A)
+		cub->player.r_l = 0;
 	return (0);
 }
 
@@ -137,6 +218,14 @@ static int	handle_input(int keysym, t_cub *cub)
 {
 	if (keysym == ESCAPE)
 		close_window(cub);
+	if (keysym == W)
+		cub->player.u_d = 1;
+	if (keysym == S)
+		cub->player.u_d = -1;
+	if (keysym == A)
+		cub->player.r_l = 1;
+	if (keysym == D)
+		cub->player.r_l = -1;
 	return (0);
 }
 
@@ -149,6 +238,7 @@ void	run_cub3d(t_cub *cub)
 										&cub->img.line_length, &cub->img.endian);
 	mlx_loop_hook(cub->mlx, &game_loop, cub);
 	mlx_hook(cub->win, 2, 1L << 0, &handle_input, cub);
+	mlx_hook(cub->win, 3, 1L<<1, &release, cub);
 	mlx_loop(cub->mlx);
 }
 

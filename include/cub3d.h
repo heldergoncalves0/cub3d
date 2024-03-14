@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:47 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/12 11:29:22 by helferna         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:26:14 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,19 @@
 #  define DOWN 65364
 # endif
 
+#define PI 3.1428
+#define TILE_SIZE 32
+#define FOV 60
+#define PLAYER_SPEED 2
+
 typedef struct s_player{
-	int	p_x;
-	int p_y;
+	int		pixel_x;
+	int		pixel_y;
+	int		p_x;
+	int		p_y;
+	double	angle;
+	int		u_d;
+	int		r_l;
 }	t_player;
 
 typedef struct	s_image {
@@ -75,3 +85,4 @@ typedef struct    s_cub3d{
 t_cub	*cub(void);
 int		close_window(t_cub	*cub);
 char	**read_map(t_cub	*cub);
+void	move_player_up(t_cub *cub);
