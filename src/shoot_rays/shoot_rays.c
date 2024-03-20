@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shoot_rays.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 17:30:13 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/14 20:17:41 by helferna         ###   ########.fr       */
+/*   Updated: 2024/03/20 13:17:42 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ float	get_h_inter(t_cub *cub, float angle)
 {
 	float	y_step;
 	float	x_step;
-	double	h_y;
-	double	pixel;
-	double	h_x;
+	float	h_y;
+	int		pixel;
+	float	h_x;
 
 	y_step = TILE_SIZE;
 	x_step = TILE_SIZE / tan(angle);
 	h_y = (floor(cub->player.p_y / TILE_SIZE) * TILE_SIZE);
 	h_x = cub->player.p_x + ((h_y - cub->player.p_x) / tan(angle));
 	pixel = inter_check(angle, &h_y, &y_step, 1);
-	if ((unit_circle(angle, 'y') && x_step > 0) || (!unit_circle(angle, 'y') && x_step < 0))
-		x_step *= -1;
+	// if ((unit_circle(angle, 'y') && x_step > 0) || (!unit_circle(angle, 'y') && x_step < 0))
+	// 	x_step *= -1;
 	//CHECK WALL HIT
 	return (sqrt(pow(h_x - cub->player.p_x, 2) + pow(h_y - cub->player.p_y, 2)));
 }
@@ -58,17 +58,17 @@ float	get_v_inter(t_cub *cub, float angle)
 {
 	float	x_step;
 	float	y_step;
-	double	v_x;
-	double	pixel;
-	double	v_y;
+	float	v_x;
+	int 	pixel;
+	float	v_y;
 
 	x_step = TILE_SIZE / tan(angle);
 	y_step = TILE_SIZE;
 	v_x = (floor(cub->player.p_x / TILE_SIZE) * TILE_SIZE);
 	v_y = cub->player.p_y + ((v_x - cub->player.p_y) / tan(angle));
 	pixel = inter_check(angle, &v_x, &x_step, 0);
-	if ((unit_circle(angle, 'x') && y_step < 0) || (!unit_circle(angle, 'x') && y_step > 0))
-		y_step *= -1;
+	// if ((unit_circle(angle, 'x') && y_step < 0) || (!unit_circle(angle, 'x') && y_step > 0))
+	// 	y_step *= -1;
 	//CHECK WALL HIT
 	return (sqrt(pow(v_x - cub->player.p_x, 2) + pow(v_y - cub->player.p_y, 2)));
 }
