@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/14 17:31:24 by helferna         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:52:25 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,7 @@ static int	game_loop(t_cub *cub)
 	draw_map(cub);
 	hook(cub, 0, 0);
 	draw_player(cub);
+	shoot_rays(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
 	return (0);
 }

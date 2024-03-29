@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:47 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/14 20:18:09 by helferna         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:29:41 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,5 @@ char	**read_map(t_cub	*cub);
 void	move_player_up(t_cub *cub);
 void	shoot_rays(t_cub *cub);
 void	render_wall(t_cub *cub, int ray);
-
+float	nor_angle(float angle);
+void	img_pix_put(t_image *img, int x, int y, int color);

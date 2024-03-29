@@ -6,7 +6,7 @@
 /*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 17:30:13 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/20 13:17:42 by helferna         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:52:14 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ void	shoot_rays(t_cub *cub)
 			cub->ray.distance = v_inter;
 		else
 			cub->ray.distance = h_inter;
+		render_wall(cub, ray);
+		ray++;
+		cub->ray.angle += (FOV / 1024);
 	}
-	render_wall(cub, ray);
-	ray++;
-	cub->ray.angle += (FOV / 1024);
 }
