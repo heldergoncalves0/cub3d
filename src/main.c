@@ -6,7 +6,7 @@
 /*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/26 14:52:25 by helferna         ###   ########.fr       */
+/*   Updated: 2024/04/11 19:56:45 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,7 @@ void	hook(t_cub *cub, double move_x, double move_y)
 
 static int	game_loop(t_cub *cub)
 {
-	draw_map(cub);
+	//draw_map(cub);
 	hook(cub, 0, 0);
 	draw_player(cub);
 	shoot_rays(cub);

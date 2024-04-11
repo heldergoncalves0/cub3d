@@ -6,7 +6,7 @@
 /*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 17:43:46 by helferna          #+#    #+#             */
-/*   Updated: 2024/03/26 15:21:04 by helferna         ###   ########.fr       */
+/*   Updated: 2024/04/08 20:02:04 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void draw_wall(t_cub *cub, int ray, int t_pix, int b_pix)
 {
 	int color;
 
-	color = get_color(cub, 0);
+	color = get_color(cub, 1);
 	while (t_pix < b_pix)
 		img_pix_put(&cub->img,	ray, t_pix++, color);
 }
@@ -59,5 +59,6 @@ void	render_wall(t_cub *cub, int ray)
 	wall_height = (TILE_SIZE * cub->ray.distance) / (1024 / tan(FOV / 2));
 	bottom_pixel = ((512 / 2) + (wall_height / 2));
 	top_pixel = ((512 / 2) - (wall_height / 2));
+	//printf("top_pixel: %f, bottom_pixel: %f\n", top_pixel, bottom_pixel);
 	draw_wall(cub, ray, top_pixel, bottom_pixel);
 }
