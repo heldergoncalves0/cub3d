@@ -6,7 +6,7 @@
 /*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 17:43:46 by helferna          #+#    #+#             */
-/*   Updated: 2024/04/08 20:02:04 by helferna         ###   ########.fr       */
+/*   Updated: 2024/06/04 02:17:14 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,53 @@ void draw_wall(t_cub *cub, int ray, int t_pix, int b_pix)
 		img_pix_put(&cub->img,	ray, t_pix++, color);
 }
 
+// void	render_wall(t_cub *cub, int ray)
+// {
+// 	double wall_height;
+// 	double bottom_pixel;
+// 	double top_pixel;
+
+// 	cub->ray.distance *= cos(nor_angle(cub->ray.angle - cub->player.angle));
+// 	wall_height = (TILE_SIZE * cub->ray.distance) / (1024 / tan(FOV / 2));
+// 	bottom_pixel = ((512 / 2) + (wall_height / 2));
+// 	top_pixel = ((512 / 2) - (wall_height / 2));
+// 	//printf("top_pixel: %f, bottom_pixel: %f\n", top_pixel, bottom_pixel);
+// 	draw_wall(cub, ray, top_pixel, bottom_pixel);
+// }
+
 void	render_wall(t_cub *cub, int ray)
 {
-	double wall_height;
-	double bottom_pixel;
-	double top_pixel;
+    double wall_height;
+    double bottom_pixel;
+    double top_pixel;
 
-	cub->ray.distance *= cos(nor_angle(cub->ray.angle - cub->player.angle));
-	wall_height = (TILE_SIZE * cub->ray.distance) / (1024 / tan(FOV / 2));
-	bottom_pixel = ((512 / 2) + (wall_height / 2));
-	top_pixel = ((512 / 2) - (wall_height / 2));
-	//printf("top_pixel: %f, bottom_pixel: %f\n", top_pixel, bottom_pixel);
-	draw_wall(cub, ray, top_pixel, bottom_pixel);
+    cub->ray.distance *= cos(nor_angle(cub->ray.angle - cub->player.angle));
+    wall_height = (TILE_SIZE / cub->ray.distance) * (1024 / tan(FOV / 2));
+    bottom_pixel = ((512 / 2) + (wall_height / 2));
+    top_pixel = ((512 / 2) - (wall_height / 2));
+
+    if (top_pixel < 0) top_pixel = 0;
+    if (bottom_pixel > 512) bottom_pixel = 512;
+
+    draw_wall(cub, ray, top_pixel, bottom_pixel);
 }
+
+// void	render_wall(t_cub *cub, int ray)
+// {
+//     double wall_height;
+//     int top_pixel, bottom_pixel;
+
+//     // Calculate the height of the wall in pixels.
+//     // This will depend on your distance to the wall and some scale factor.
+//     // For example:
+//     wall_height = cub->dist_to_wall[ray] * SCALE_FACTOR;
+
+//     // Calculate the top and bottom pixels to draw the wall.
+//     // This will depend on the vertical position of your camera and the height of the wall.
+//     // For example:
+//     top_pixel = cub->camera_y - (wall_height / 2);
+//     bottom_pixel = cub->camera_y + (wall_height / 2);
+
+//     // Draw the wall.
+//     draw_wall(cub, ray, top_pixel, bottom_pixel);
+// }
