@@ -6,7 +6,7 @@
 /*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/06 16:19:28 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:52:48 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@ int	main(int argc, char **argv)
 {
 	static t_cub cub;
 
- 	// if (!argv[1] || argc > 2)
- 	// 	return (0);
-	(void)argc;
-
+	if (argc != 2)
+	{
+		ft_putstr("Error\nInvalid number of arguments\n");
+		return (2);
+	}
 	if (!initialization(&cub) || !parse_cub(&cub, argv[1], &cub.win, cub.map))
 	{
 		//exit_all(&cub);
