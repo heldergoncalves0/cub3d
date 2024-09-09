@@ -6,7 +6,7 @@
 /*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/09 12:52:48 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:57:11 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr("Error\nInvalid number of arguments\n");
+		printf("Error\nInvalid number of arguments\n");
 		return (2);
 	}
 	if (!initialization(&cub) || !parse_cub(&cub, argv[1], &cub.win, cub.map))
