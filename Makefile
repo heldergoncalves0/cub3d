@@ -3,22 +3,25 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/08 17:25:02 by helferna          #+#    #+#              #
-#    Updated: 2024/03/14 17:47:52 by helferna         ###   ########.fr        #
+#    Updated: 2024/09/06 16:41:12 by helferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME  = cub3d
+NAME  = cub3D
 OS    = $(shell uname)
-CC    = @gcc
-FLAGS = -Wall -Wextra -g -fsanitize=address
+CC    = @cc
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 LFT   = libft/libft.a
 INC   = -I./libft -I.mlx -I./mlx_macos -I./include
-SRC   = src/main.c src/map/read_map.c src/utils/utils.c \
-		src/player_moves/player_moves.c src/shoot_rays/shoot_rays.c \
-		src/render/render_wall.c
+SRC   = src/main.c src/bye.c src/controller.c src/mlx_helper.c src/player_move.c \
+        src/player.c src/render_2d.c src/render_3d.c src/init.c src/parsing/parser.c \
+		src/parsing/parse_configs.c src/parsing/parse_map.c src/parsing/parse_map_utils.c \
+		src/parsing/parse_configs_utils.c src/parsing/parse_configs_textures.c \
+		src/parsing/parse_configs_line.c src/parsing/parse_configs_colors.c \
+		src/raycasting/raycast.c src/raycasting/helpers.c 
 OBJ   = $(patsubst src/%.c, obj/%.o, $(SRC))
 
 ifeq ($(OS), Darwin)
@@ -26,9 +29,9 @@ ifeq ($(OS), Darwin)
 	INC_MLX = mlx_macos
    	LIB = -L./libft -lft -L./mlx_macos -lmlx -framework OpenGL -framework AppKit
 else
-	MLX = /minilibx-linux/libmlx.a
-	INC_MLX = minilibx-linux
-	LIB = -L./libft -lft -L./minilibx-linux -lmlx -lXext -lX11
+	MLX = /mlx_linux/libmlx.a
+	INC_MLX = mlx_linux
+	LIB = -L./libft -lft -L./mlx_linux -lmlx -lXext -lX11
 endif
 
 # COLORS
