@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controller.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:38:54 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 16:09:32 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:56:58 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	key_release(int key, t_cub *cub)
 	if (key == G)
 		cub->ctrl->mini_map = true;
 	if (key == F)
-	    cub->ctrl->mini_map = false;
+		cub->ctrl->mini_map = false;
 	if (key == D)
 		cub->ctrl->mv_rt = false;
 	if (key == Q || key == LEFT)

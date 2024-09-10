@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/08 17:25:02 by helferna          #+#    #+#              #
-#    Updated: 2024/09/10 16:21:52 by helferna         ###   ########.fr        #
+#    Updated: 2024/09/10 16:59:08 by rprocopi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bye.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:42:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 16:00:13 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:20:22 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,40 +44,27 @@ void	destroy_image(void *mlx, t_image *img)
 		free(img);
 }
 
-void	destroy_map(void *mlx, t_map *map)
-{
-	if (!mlx || !map)
-		return ;
-	destroy_image(mlx, map->no);
-	destroy_image(mlx, map->so);
-	destroy_image(mlx, map->we);
-	destroy_image(mlx, map->ea);
-	if (map->map)
-		ft_free_array(map->map);
-	if (map)
-		free(map);
-}
-
-void	destroy_window(t_win *win)
-{
-	destroy_image(win->mlx, win->img);
-	mlx_destroy_window(win->mlx, win->win);
-	// mlx_destroy_display(win->mlx);
-	// if (win->mlx)
-	// 	free(win->mlx);
-	// if (win)
-	// 	free(win);
-}
-
 void	free_cub(t_cub *cub)
 {
 	if (cub->map)
-		destroy_map(cub->win.mlx, cub->map);
-	destroy_window(&cub->win);
+	{
+		if (!cub->win.img || !cub->map)
+			return ;
+		destroy_image(cub->win.mlx, cub->map->no);
+		destroy_image(cub->win.mlx, cub->map->so);
+		destroy_image(cub->win.mlx, cub->map->we);
+		destroy_image(cub->win.mlx, cub->map->ea);
+		if (cub->map->map)
+			ft_free_array(cub->map->map);
+		if (cub->map)
+			free(cub->map);
+	}
+	destroy_image(cub->win.mlx, cub->win.img);
+	mlx_destroy_window(cub->win.mlx, cub->win.win);
 	if (cub->ctrl)
 		free(cub->ctrl);
-	// if (cub)
-	// 	free(cub);
+	if (cub->win.win)
+		free(cub->win.win);
 }
 
 int	exit_all(t_cub *cub)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_configs_textures.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
+/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:25:56 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/06 16:25:58 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:46:04 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ t_image	*assign_texture(void *mlx, char *path)
 		free(img);
 		return (NULL);
 	}
-	img->addr = mlx_get_data_addr(img->img, &(img->bits_per_pixel), &(img->line_length),
+	img->addr = mlx_get_data_addr(img->img, &(img->bits_per_pixel), \
+		&(img->line_length),
 			&(img->endian));
 	return (img);
 }

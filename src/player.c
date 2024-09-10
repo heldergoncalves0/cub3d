@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:51:04 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 14:13:40 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:49:23 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ bool	__player_exists_here(t_map *map, t_player *player, unsigned int x,
 	else
 		return (false);
 	player->pos = (t_vector){.x = (double)x + 0.5, .y = (double)y + 0.5};
-	//__display_player_info(player, map->map[y][x]);
 	map->map[y][x] = '0';
 	return (true);
 }

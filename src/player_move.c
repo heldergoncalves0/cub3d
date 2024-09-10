@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:00:07 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 14:33:33 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:53:47 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	rotate_vector(t_vector *vec, double angle)
 
 void	rotate_player_dir(t_vector *vector, t_vector *rotate)
 {
-	double			theta;
+	double		theta;
 	t_vector	tmp;
 
 	theta = atan2(rotate->y, rotate->x) + M_PI / 2;

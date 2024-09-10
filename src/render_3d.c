@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_3d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 21:38:51 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 14:41:12 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:48:26 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,6 @@ static double	get_delta_pos(t_image *texture, t_vector *pos,
 	}
 	pos->y = (((double)(wall_height - WinHeight) / 2) / wall_height)
 		* texture->height;
-	// if (wall_height > WinHeight)
-	// 	pos->y = (wall_height - WinHeight) / 2.0 * delta;
-	// else
-	// 	pos->y = 0.0;
 	delta = 1 - ((double)(wall_height - WinHeight) / wall_height);
 	delta = (delta * texture->height) / WinHeight;
 	return (delta);
@@ -57,9 +53,9 @@ void	set_wall_texture(t_image *image, t_coords image_cords, \
 	char	*dest;
 
 	src = texture->addr + ((int)(texture_pos.y) *(texture->line_length) \
-								+ (int)(texture_pos.x) *(texture->bits_per_pixel / 8));
+						+ (int)(texture_pos.x) *(texture->bits_per_pixel / 8));
 	dest = image->addr +((int)(image_cords.y) *(image->line_length) \
-								+ (int)(image_cords.x) *(image->bits_per_pixel / 8));
+		+ (int)(image_cords.x) *(image->bits_per_pixel / 8));
 	*(unsigned int *)dest = *(unsigned int *)src;
 }
 
@@ -85,7 +81,6 @@ void	create_wall(t_image *image, t_computes *computes, t_map *map)
 		else
 			texture_pos.x = (double)texture->width * computed->wall_x;
 		delta = get_delta_pos(texture, &texture_pos, computed->wall_height);
-		//printf("computed->dir: %c\n", computed->dir);
 		cords.y = computed->start_wall - 1;
 		while (++cords.y < computed->end_wall)
 		{

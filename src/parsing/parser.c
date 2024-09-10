@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
+/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:13:23 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/06 16:27:15 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:45:39 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ bool	check_file_format(char *file, char *format)
 		return (true);
 	return (false);
 }
-
 
 bool	can_read_file(char *path, char *format)
 {
@@ -57,7 +56,6 @@ bool	parse_cub(t_cub *cub, char *path, t_win *win, t_map *map)
 	int	map_fd;
 
 	map_fd = -1;
-	//null_map_confs(map);
 	if (!can_read_file(path, ".cub"))
 		return (do_stuff(cub, map_fd, "Failed to read map file"));
 	map_fd = open(path, O_RDONLY);

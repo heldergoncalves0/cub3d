@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_helper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
+/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:10:09 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/05 16:14:26 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:50:21 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

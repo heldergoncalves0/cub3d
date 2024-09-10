@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:36:00 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 16:00:42 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:44:56 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	__render_computes(t_computes *computes, t_player *player)
 	__wall_info(computes, player);
 	__hit_infos(computes);
 	computes->wall_height = (int)((double)WinHeight / computes->dist_to_wall)
-		* 0.6;
+		*0.6;
 	computes->start_wall = fmax(0, (WinHeight / 2) - (computes->wall_height
 				/ 2));
 	computes->end_wall = fmin(WinHeight, (WinHeight / 2)
@@ -59,6 +59,6 @@ void	__render_computes(t_computes *computes, t_player *player)
 		* computes->ray.y;
 	if (computes->dir == 'S' || computes->dir == 'N')
 		computes->wall_x = computes->hit_pos.x - floor(computes->hit_pos.x);
-	else 
+	else
 		computes->wall_x = computes->hit_pos.y - floor(computes->hit_pos.y);
 }
