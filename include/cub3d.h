@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:47 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 17:41:18 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:37:37 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,5 +179,6 @@ size_t			ft_array_len(char **array);
 int				rgb_to_hex(int r, int g, int b);
 void			raycast(int column, t_map *map, t_player *player, \
 													t_computes *computes);
-
+bool			init_mlx(t_cub *cub);
+bool			init_win(t_cub *cub);
 #endif

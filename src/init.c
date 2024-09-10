@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 17:54:56 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 17:39:18 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:40:12 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ bool	init_mlx(t_cub *cub)
 		printf("Error: Failed to initialize mlx.\n");
 		return (false);
 	}
+	return (true);
+}
+
+bool	init_win(t_cub *cub)
+{
 	cub->win.win = mlx_new_window(cub->win.mlx, WINWIDTH, WINHEIGHT,
 			"cub3D");
 	if (!cub->win.win)
