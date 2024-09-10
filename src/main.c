@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/09 13:57:11 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:07:25 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
 
 int	run_cub3d(t_cub *cub)
 {
@@ -21,8 +20,8 @@ int	run_cub3d(t_cub *cub)
 	update_camera_plane(&cub->player);
 
 	render_dimension_3d(cub);
-	render_2d_map(cub, cub->map, &cub->win, cub->player);
-
+	if (cub->ctrl->mini_map)
+		render_2d_map(cub, cub->map, &cub->win, cub->player);
 	mlx_put_image_to_window(cub->win.mlx, cub->win.win, cub->win.img->img, 0, 0);
 	return (0);
 }

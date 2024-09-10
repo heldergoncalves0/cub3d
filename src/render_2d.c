@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_2d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 17:12:10 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/09 12:20:56 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 10:56:50 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

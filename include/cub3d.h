@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:47 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/09 12:22:09 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:07:56 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <math.h>
 # include <string.h>
 # include <fcntl.h>
+# include <unistd.h>
 # include <stdbool.h>
 # include "../libft/libft.h"
 
@@ -50,6 +51,8 @@
 #  define D 100
 #  define Q 113
 #  define E 101
+#	define F 102
+#	define G 103
 #  define UP 65362
 #  define DOWN 65364
 #  define LEFT 65361
@@ -121,6 +124,7 @@ typedef struct s_controller
 	bool	rt_lf;
 	bool	rt_rt;
 	bool	game_over;
+	bool	mini_map;
 }	t_controller;
 
 typedef struct s_win

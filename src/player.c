@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:51:04 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/09 12:47:42 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:13:40 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	rotate_vector(t_vector *vec, double angle);
 // void	__display_player_info(t_player *player, char dir)
 // {
 // 	printf("------------------------------\n");
-// 	printf(GREEN BOLD "Player: \n" RESET_COLOR);
-// 	printf(CYAN "Found at: (%d, %d)\n" RESET_COLOR, (int)player->pos.x, \
+// 	printf("Player: \n");
+// 	printf("Found at: (%d, %d)\n", (int)player->pos.x, \
 // 		(int)player->pos.y);
-// 	printf(CYAN "Direction: (%c)\n" RESET_COLOR, dir);
+// 	printf("Direction: (%c)\n", dir);
 // }
 
 bool	__player_exists_here(t_map *map, t_player *player, unsigned int x,

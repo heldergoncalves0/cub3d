@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bye.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:42:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/09 12:17:34 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:00:13 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	free_cub(t_cub *cub)
 	if (cub->map)
 		destroy_map(cub->win.mlx, cub->map);
 	destroy_window(&cub->win);
-	// if (cub->ctrl)
-	// 	free(cub->ctrl);
+	if (cub->ctrl)
+		free(cub->ctrl);
 	// if (cub)
 	// 	free(cub);
 }

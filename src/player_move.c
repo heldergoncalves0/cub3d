@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:00:07 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/09 12:17:53 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:33:33 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:36:09 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/06 15:50:59 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:58:27 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
