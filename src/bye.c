@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bye.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:42:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 17:20:22 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:27:07 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ void	free_cub(t_cub *cub)
 	if (cub->ctrl)
 		free(cub->ctrl);
 	if (cub->win.win)
-		free(cub->win.win);
+		mlx_destroy_display(cub->win.mlx);
+	if (cub->win.mlx)
+		free(cub->win.mlx);
 }
 
 int	exit_all(t_cub *cub)

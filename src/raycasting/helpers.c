@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:36:00 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 16:44:56 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:39:18 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ void	__render_computes(t_computes *computes, t_player *player)
 {
 	__wall_info(computes, player);
 	__hit_infos(computes);
-	computes->wall_height = (int)((double)WinHeight / computes->dist_to_wall)
+	computes->wall_height = (int)((double)WINHEIGHT / computes->dist_to_wall)
 		*0.6;
-	computes->start_wall = fmax(0, (WinHeight / 2) - (computes->wall_height
+	computes->start_wall = fmax(0, (WINHEIGHT / 2) - (computes->wall_height
 				/ 2));
-	computes->end_wall = fmin(WinHeight, (WinHeight / 2)
+	computes->end_wall = fmin(WINHEIGHT, (WINHEIGHT / 2)
 			+ (int)ceil(computes->wall_height / 2));
 	computes->hit_pos.x = player->pos.x + computes->dist_to_wall
 		* computes->ray.x;

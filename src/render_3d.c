@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_3d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 21:38:51 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 16:48:26 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:39:18 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ static double	get_delta_pos(t_image *texture, t_vector *pos,
 	double	delta;
 
 	delta = (double)texture->height / wall_height;
-	if (wall_height < WinHeight)
+	if (wall_height < WINHEIGHT)
 	{
 		pos->y = 0.0;
 		return (delta);
 	}
-	pos->y = (((double)(wall_height - WinHeight) / 2) / wall_height)
+	pos->y = (((double)(wall_height - WINHEIGHT) / 2) / wall_height)
 		* texture->height;
-	delta = 1 - ((double)(wall_height - WinHeight) / wall_height);
-	delta = (delta * texture->height) / WinHeight;
+	delta = 1 - ((double)(wall_height - WINHEIGHT) / wall_height);
+	delta = (delta * texture->height) / WINHEIGHT;
 	return (delta);
 }
 
@@ -72,7 +72,7 @@ void	create_wall(t_image *image, t_computes *computes, t_map *map)
 	t_vector		texture_pos;
 
 	cords = (t_coords){-1, -1};
-	while (++cords.x < WinWidth)
+	while (++cords.x < WINWIDTH)
 	{
 		computed = &computes[cords.x];
 		texture = get_texture(computed, map);
@@ -97,7 +97,7 @@ void	render_dimension_3d(t_cub *cub)
 	unsigned int	i;
 
 	i = -1;
-	while (++i < WinWidth)
+	while (++i < WINWIDTH)
 		raycast(i, cub->map, &cub->player, &cub->cols[i]);
 	create_wall(cub->win.img, cub->cols, cub->map);
 }

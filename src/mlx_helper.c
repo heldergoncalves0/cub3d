@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_helper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:10:09 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 16:50:21 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:39:18 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,18 @@ void	win_fill(t_win *win, int ceiling_color, int floor_color)
 	int	y;
 
 	y = 0;
-	while (y < WinHeight / 2)
+	while (y < WINHEIGHT / 2)
 	{
 		x = 0;
-		while (x < WinWidth)
+		while (x < WINWIDTH)
 			put_pixel(win->img, x++, y, ceiling_color);
 		y++;
 	}
-	y = WinHeight / 2;
-	while (y < WinHeight)
+	y = WINHEIGHT / 2;
+	while (y < WINHEIGHT)
 	{
 		x = 0;
-		while (x < WinWidth)
+		while (x < WINWIDTH)
 			put_pixel(win->img, x++, y, floor_color);
 		y++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:13:23 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 16:45:39 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:46:09 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ bool	can_read_file(char *path, char *format)
 bool	do_stuff(t_cub *cub, int map_fd, char *path)
 {
 	free_cub(cub);
-	printf("Error: %s\n", path);
+	printf("Error\n%s", path);
 	if (map_fd != -1)
 		close(map_fd);
 	return (false);

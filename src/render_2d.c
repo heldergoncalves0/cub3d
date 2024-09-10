@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_2d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 17:12:10 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 16:48:51 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:39:03 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	draw_rays(t_cub *cub)
 	player_cord.x = cub->player.pos.x * TILE_SIZE;
 	player_cord.y = cub->player.pos.y * TILE_SIZE;
 	i = -1;
-	while (++i < WinWidth)
+	while (++i < WINWIDTH)
 	{
 		hit_cord.x = cub->cols[i].hit_pos.x * TILE_SIZE - player_cord.x;
 		hit_cord.y = cub->cols[i].hit_pos.y * TILE_SIZE - player_cord.y;

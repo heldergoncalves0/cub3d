@@ -6,7 +6,7 @@
 /*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:36:09 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 15:58:27 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:39:03 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	raycast(int column, t_map *map, t_player *player, t_computes *computes)
 {
 	double	camera;
 
-	camera = ((2 * column / (double)WinWidth) - 1);
+	camera = ((2 * column / (double)WINWIDTH) - 1);
 	__helper_vecs(computes, player, camera);
 	__deltas(computes);
 	__sides(computes, player);

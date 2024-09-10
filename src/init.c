@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 17:54:56 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 16:56:17 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:39:18 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	init_mlx(t_cub *cub)
 		printf("Error: Failed to initialize mlx.\n");
 		return (false);
 	}
-	cub->win.win = mlx_new_window(cub->win.mlx, WinWidth, WinHeight,
+	cub->win.win = mlx_new_window(cub->win.mlx, WINWIDTH, WINHEIGHT,
 			"cub3D");
 	if (!cub->win.win)
 	{
@@ -45,7 +45,7 @@ bool	init_map(t_cub *cub)
 
 bool	init_image(t_cub *cub)
 {
-	cub->win.img->img = mlx_new_image(cub->win.mlx, WinWidth, WinHeight);
+	cub->win.img->img = mlx_new_image(cub->win.mlx, WINWIDTH, WINHEIGHT);
 	if (!cub->win.img->img)
 	{
 		printf("Error: Failed to create image.\n");
@@ -77,7 +77,7 @@ bool	initialization(t_cub *cub)
 	}
 	if (!init_image(cub))
 		return (false);
-	cub->win.img->width = WinWidth;
-	cub->win.img->height = WinHeight;
+	cub->win.img->width = WINWIDTH;
+	cub->win.img->height = WINHEIGHT;
 	return (true);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 16:53:13 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:41:43 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ int	main(int argc, char **argv)
 		return (2);
 	}
 	if (!initialization(&cub) || !parse_cub(&cub, argv[1], &cub.win, cub.map))
-	{
 		return (2);
-	}
 	cub.ctrl = init_controller(&cub);
 	if (!cub.ctrl)
 	{
