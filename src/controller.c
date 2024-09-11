@@ -6,7 +6,7 @@
 /*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:38:54 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 16:56:58 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/11 13:12:15 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ static int	key_press(int key, t_cub *cub)
 		cub->ctrl->rt_lf = true;
 	if (key == E || key == RIGHT)
 		cub->ctrl->rt_rt = true;
+	if (key == KEYMENUS && cub->ctrl->speed > 2)
+		cub->ctrl->speed -= 1;
+	if (key == KEYMOR && cub->ctrl->speed < 10)
+		cub->ctrl->speed += 1;
 	if (key == ESC)
 		exit_all(cub);
 	return (0);

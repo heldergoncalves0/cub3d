@@ -6,7 +6,7 @@
 /*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:00:07 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 16:53:47 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/11 13:01:57 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,21 @@ void	player_move(t_player *player, t_controller *controller, char **map)
 	t_vector	move_dir;
 
 	move_dir = (t_vector){0, 0};
-	move_dir.y -= (controller->mv_fw);
-	move_dir.y += (controller->mv_bw);
-	move_dir.x -= (controller->mv_lf);
-	move_dir.x += (controller->mv_rt);
+	move_dir.y -= controller->mv_fw;
+	move_dir.y += controller->mv_bw;
+	move_dir.x -= controller->mv_lf;
+	move_dir.x += controller->mv_rt;
 	if (controller->rt_lf)
 		rotate_vector(&player->dir, -1);
 	if (controller->rt_rt)
 		rotate_vector(&player->dir, 1);
 	if (move_dir.x == 0 && move_dir.y == 0)
 		return ;
+	if (controller->speed < 1)
+		controller->speed = 1;
 	rotate_player_dir(&move_dir, &player->dir);
-	move_dir.x *= 0.025;
-	move_dir.y *= 0.025;
+	move_dir.x *= 0.025 * controller->speed;
+	move_dir.y *= 0.025 * controller->speed;
 	_check_for_colision(player, map, move_dir);
 	_get_vec_magnitude(&player->dir);
 }

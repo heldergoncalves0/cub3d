@@ -6,7 +6,7 @@
 /*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:47 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 18:37:37 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:34:54 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,12 @@
 #  define DOWN 65364
 #  define LEFT 65361
 #  define RIGHT 65363
+#  define KEYMENUS	65453	
+#  define KEYMOR  65451
+
 # endif
 
-# define PI 3.1428
+# define M_PI 3.14159265358979323846
 # define TILE_SIZE 14
 # define FOV 60
 # define PLAYER_SPEED 0.04
@@ -126,6 +129,7 @@ typedef struct s_controller
 	bool	rt_rt;
 	bool	game_over;
 	bool	mini_map;
+	char	speed;
 }	t_controller;
 
 typedef struct s_win
@@ -168,6 +172,7 @@ void			update_camera_plane(t_player *player);
 void			render_2d_map(t_cub *cub, t_map *map, \
 									t_win *win, t_player player);
 void			render_dimension_3d(t_cub *cub);
+void			print_menu(t_win data);
 void			init_player(t_player *player, t_map *map);
 void			put_pixel(t_image *img, int x, int y, int color);
 void			draw_square(t_image *img, t_coords cord, int size, int color);
@@ -181,4 +186,5 @@ void			raycast(int column, t_map *map, t_player *player, \
 													t_computes *computes);
 bool			init_mlx(t_cub *cub);
 bool			init_win(t_cub *cub);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 18:41:10 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:36:45 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	run_cub3d(t_cub *cub)
 		render_2d_map(cub, cub->map, &cub->win, cub->player);
 	mlx_put_image_to_window(cub->win.mlx, cub->win.win, \
 		cub->win.img->img, 0, 0);
+	print_menu(cub->win);
 	return (0);
 }
 
@@ -34,7 +35,7 @@ int	main(int argc, char **argv)
 	if (!initialization(&cub) || !parse_cub(&cub, argv[1], &cub.win, cub.map))
 		return (2);
 	if (!init_win(&cub))
-		return (false);
+		return (2);
 	cub.ctrl = init_controller(&cub);
 	if (!cub.ctrl)
 		return (exit_all(&cub), 2);
