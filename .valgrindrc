@@ -1,0 +1,7 @@
+--leak-check=full
+--track-origins=yes
+--show-leak-kinds=all
+--track-origins=yes
+--log-file=>>valgrind-out.txt
+
+
