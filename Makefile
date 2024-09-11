@@ -6,14 +6,14 @@
 #    By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/08 17:25:02 by helferna          #+#    #+#              #
-#    Updated: 2024/09/11 15:00:33 by helferna         ###   ########.fr        #
+#    Updated: 2024/09/11 17:06:02 by helferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME  = cub3D
 OS    = $(shell uname)
 CC    = @cc
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 LFT   = libft/libft.a
 INC   = -I./libft -I.mlx -I./mlx_macos -I./include
 SRC   = src/main.c src/menu.c src/bye.c src/controller.c src/mlx_helper.c src/player_move.c \

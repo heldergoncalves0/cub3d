@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 10:55:02 by rprocopi          #+#    #+#             */
-/*   Updated: 2024/09/11 15:17:23 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:38:25 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	print_menu(t_win data)
 		"//// CONTROLS ////");
 	print_str(data, 10, y += 20, "Press 'ESC' to close");
 	print_str(data, 10, y += 20, "Press 'G' to show MiniMap");
-	print_str(data, 10, y += 20, "Press 'H' to hide MiniMap");
+	print_str(data, 10, y += 20, "Press 'F' to hide MiniMap");
 	print_str(data, 10, y += 20, "Speed: press '-' or '+'");
 	print_str(data, 10, y += 20, "Move : press arrow keys or 'WS'");
-	print_str(data, 10, y += 20, "Rotation: press arrow keys or 'QE'");
-	print_str(data, 10, y += 20, "Shift to the side: press 'A' or 'S'");
+	print_str(data, 10, y += 20, "Rotation: press '<-' '->' or 'QE'");
+	print_str(data, 10, y += 20, "Shift to the side: press 'A' or 'D'");
 }

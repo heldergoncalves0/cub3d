@@ -6,7 +6,7 @@
 /*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:13:23 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/11 15:59:09 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/11 17:21:01 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ bool	parse_cub(t_cub *cub, char *path, t_win *win, t_map *map)
 
 	map_fd = -1;
 	if (!can_read_file(path, ".cub"))
-		return (do_stuff(cub, map_fd, "Failed to read map file"));
+		return (do_stuff(cub, map_fd, "Failed to read map file\n"));
 	map_fd = open(path, O_RDONLY);
 	if (map_fd == -1 || !parse_configs(map_fd, win, map))
-		return (do_stuff(cub, map_fd, "Failed to parse configs"));
+		return (do_stuff(cub, map_fd, "Failed to parse configs\n"));
 	if (!parse_map(map_fd, &map))
-		return (do_stuff(cub, map_fd, "Failed to parse map"));
+		return (do_stuff(cub, map_fd, "Failed to parse map\n"));
 	close(map_fd);
 	return (true);
 }

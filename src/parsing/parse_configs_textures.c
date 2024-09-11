@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_configs_textures.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:25:56 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 16:46:04 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:32:05 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
