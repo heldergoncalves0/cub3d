@@ -1,18 +1,18 @@
-NO textures/poolN.xpm
+NO textures/wall_with_N.xpm
 
-WE textures/swim_hard.xpm
-
-
-EA textures/cluster1.xpm
+WE textures/wall_with_W.xpm
 
 
-SO textures/poolS.xpm
+EA textures/wall_with_E.xpm
 
 
-F 28,71,104
+SO textures/wall_with_S.xpm
 
 
-C 0,204,255
+F 37,61,42
+
+
+C 87,82,82
 
 
 

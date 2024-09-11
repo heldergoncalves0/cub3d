@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+         #
+#    By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/08 17:25:02 by helferna          #+#    #+#              #
-#    Updated: 2024/09/10 16:59:08 by rprocopi         ###   ########.fr        #
+#    Updated: 2024/09/11 15:00:33 by helferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME  = cub3D
 OS    = $(shell uname)
 CC    = @cc
-FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 LFT   = libft/libft.a
 INC   = -I./libft -I.mlx -I./mlx_macos -I./include
 SRC   = src/main.c src/bye.c src/controller.c src/mlx_helper.c src/player_move.c \
@@ -33,12 +33,6 @@ else
 	INC_MLX = mlx_linux
 	LIB = -L./libft -lft -L./mlx_linux -lmlx -lXext -lX11
 endif
-
-# COLORS
-RED     = \033[0;31m
-GREEN   = \033[0;32m
-YELLOW  = \033[0;33m
-RESET   = \033[0m
 
 all: $(MLX) $(LFT) obj $(NAME)
 

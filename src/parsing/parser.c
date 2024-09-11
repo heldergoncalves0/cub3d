@@ -6,7 +6,7 @@
 /*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:13:23 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 17:46:09 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:01:09 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ bool	parse_map(int map_fd, t_map **map);
 bool	parse_configs(int map_fd, t_win *win, t_map *map);
 bool	is_line_empty(char *line);
 bool	check_borders(char **map, int i, int j);
-void	null_map_confs(t_map *map);
 
 bool	check_file_format(char *file, char *format)
 {

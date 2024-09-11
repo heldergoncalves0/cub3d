@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@students.42lisboa.co    +#+  +:+       +#+        */
+/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:24:57 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/06 16:25:01 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:14:23 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,10 @@
 */
 bool	check_borders(char **map, int i, int j)
 {
-	if (j == 0 || i == 0 || !map[i + 1] || \
-		!map[i][j + 1] || !map[i][j - 1] || \
-		!map[i - 1][j] || !map[i + 1][j] || \
-		(map[i][j - 1] && map[i][j - 1] == ' ') || \
-		(map[i][j + 1] && map[i][j + 1] == ' ') || \
-		(map[i - 1][j] && map[i - 1][j] == ' ') || \
-		(map[i + 1][j] && map[i + 1][j] == ' '))
-	{
+	if (j == 0 || i == 0 || !map[i + 1] || !map[i][j + 1] || !map[i][j - 1] ||
+			!map[i - 1][j] || map[i][j - 1] == ' ' || map[i][j + 1] == ' ' ||
+				map[i - 1][j] == ' ' || map[i + 1][j] == ' ')
 		return (false);
-	}
 	return (true);
 }
 
@@ -63,13 +57,4 @@ bool	is_space(char c)
 {
 	return (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
 		|| c == '\r');
-}
-
-void	null_map_confs(t_map *map)
-{
-	map->no = NULL;
-	map->so = NULL;
-	map->we = NULL;
-	map->ea = NULL;
-	map->map = NULL;
 }
