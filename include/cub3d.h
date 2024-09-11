@@ -6,7 +6,7 @@
 /*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:47 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/11 15:34:54 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:14:48 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@
 #  define RIGHT 65363
 #  define KEYMENUS	65453	
 #  define KEYMOR  65451
+#  define SPACE 32
 
 # endif
 
@@ -130,6 +131,7 @@ typedef struct s_controller
 	bool	game_over;
 	bool	mini_map;
 	char	speed;
+	int		menu;
 }	t_controller;
 
 typedef struct s_win

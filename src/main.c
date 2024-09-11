@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/11 17:17:19 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:30:36 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	run_cub3d(t_cub *cub)
 		render_2d_map(cub, cub->map, &cub->win, cub->player);
 	mlx_put_image_to_window(cub->win.mlx, cub->win.win, \
 		cub->win.img->img, 0, 0);
-	print_menu(cub->win);
+	if (cub->ctrl->menu == 1)
+		print_menu(cub->win);
 	return (0);
 }
 
