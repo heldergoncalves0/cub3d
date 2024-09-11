@@ -6,7 +6,7 @@
 /*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/11 18:30:36 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/11 19:49:39 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	run_cub3d(t_cub *cub)
 	mlx_put_image_to_window(cub->win.mlx, cub->win.win, \
 		cub->win.img->img, 0, 0);
 	if (cub->ctrl->menu == 1)
-		print_menu(cub->win);
+		print_menu(cub);
 	return (0);
 }
 

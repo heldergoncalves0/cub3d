@@ -6,7 +6,7 @@
 /*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:38:54 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/11 18:34:30 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/11 19:52:00 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	key_press(int key, t_cub *cub)
 		cub->ctrl->rt_lf = true;
 	if (key == E || key == RIGHT)
 		cub->ctrl->rt_rt = true;
-	if (key == KEYMENUS && cub->ctrl->speed > 2)
+	if (key == KEYMENUS && cub->ctrl->speed > 1)
 		cub->ctrl->speed -= 1;
 	if (key == KEYMOR && cub->ctrl->speed < 10)
 		cub->ctrl->speed += 1;
@@ -69,8 +69,8 @@ t_controller	*init_controller(t_cub *cub)
 		return (NULL);
 	}
 	*ctrl = (t_controller){.mv_fw = false, .mv_bw = false, .mv_lf = false, \
-		.mv_rt = false, .rt_lf = false, .rt_rt = false, .game_over = false, \
-		.mini_map = false, .speed = 1, .menu = 1};
+	.mv_rt = false, .rt_lf = false, .rt_rt = false, .game_over = false, \
+	.mini_map = false, .speed = 1, .menu = 1};
 	mlx_hook(cub->win.win, 2, (1L << 0), &key_press, cub);
 	mlx_hook(cub->win.win, 3, (1L << 1), &key_release, cub);
 	mlx_hook(cub->win.win, 17, 0L, &exit_all, cub);

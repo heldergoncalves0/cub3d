@@ -6,7 +6,7 @@
 /*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:47 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/11 18:14:48 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/11 19:45:07 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ typedef struct s_controller
 	bool	rt_rt;
 	bool	game_over;
 	bool	mini_map;
-	char	speed;
+	int		speed;
 	int		menu;
 }	t_controller;
 
@@ -174,7 +174,7 @@ void			update_camera_plane(t_player *player);
 void			render_2d_map(t_cub *cub, t_map *map, \
 									t_win *win, t_player player);
 void			render_dimension_3d(t_cub *cub);
-void			print_menu(t_win data);
+void			print_menu(t_cub *data);
 void			init_player(t_player *player, t_map *map);
 void			put_pixel(t_image *img, int x, int y, int color);
 void			draw_square(t_image *img, t_coords cord, int size, int color);

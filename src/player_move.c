@@ -6,7 +6,7 @@
 /*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:00:07 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/11 18:17:18 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/11 19:56:31 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void	player_move(t_player *player, t_controller *controller, char **map)
 	if (controller->speed < 1)
 		controller->speed = 1;
 	rotate_player_dir(&move_dir, &player->dir);
-	move_dir.x *= 0.025 * controller->speed;
-	move_dir.y *= 0.025 * controller->speed;
+	move_dir.x *= 0.009 * controller->speed;
+	move_dir.y *= 0.009 * controller->speed;
 	_check_for_colision(player, map, move_dir);
 	_get_vec_magnitude(&player->dir);
 }
