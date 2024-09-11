@@ -6,7 +6,7 @@
 #    By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/08 17:25:02 by helferna          #+#    #+#              #
-#    Updated: 2024/09/10 16:59:08 by rprocopi         ###   ########.fr        #
+#    Updated: 2024/09/11 14:46:59 by rprocopi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,12 @@ CC    = @cc
 FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 LFT   = libft/libft.a
 INC   = -I./libft -I.mlx -I./mlx_macos -I./include
-SRC   = src/main.c src/bye.c src/controller.c src/mlx_helper.c src/player_move.c \
+SRC   = src/main.c src/menu.c src/bye.c src/controller.c src/mlx_helper.c src/player_move.c \
         src/player.c src/render_2d.c src/render_3d.c src/init.c src/parsing/parser.c \
 		src/parsing/parse_configs.c src/parsing/parse_map.c src/parsing/parse_map_utils.c \
 		src/parsing/parse_configs_utils.c src/parsing/parse_configs_textures.c \
 		src/parsing/parse_configs_line.c src/parsing/parse_configs_colors.c \
-		src/raycasting/raycast.c src/raycasting/helpers.c 
+		src/raycasting/raycast.c src/raycasting/helpers.c
 OBJ   = $(patsubst src/%.c, obj/%.o, $(SRC))
 
 ifeq ($(OS), Darwin)

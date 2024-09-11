@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:13:23 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/10 17:46:09 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/11 14:29:39 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
