@@ -6,7 +6,7 @@
 /*   By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:42:11 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/11 17:25:00 by helferna         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:02:16 by helferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ void	free_cub(t_cub *cub)
 {
 	if (cub->map)
 	{
-		if (!cub->win.img)
-			return ;
 		destroy_image(cub->win.mlx, cub->map->no);
 		destroy_image(cub->win.mlx, cub->map->so);
 		destroy_image(cub->win.mlx, cub->map->we);
@@ -60,13 +58,18 @@ void	free_cub(t_cub *cub)
 	}
 	destroy_image(cub->win.mlx, cub->win.img);
 	if (cub->win.win)
+	{
 		mlx_destroy_window(cub->win.mlx, cub->win.win);
+		mlx_destroy_display(cub->win.mlx);
+		free(cub->win.mlx);
+	}
 	if (cub->ctrl)
 		free(cub->ctrl);
-	if (cub->win.win)
+	if (!cub->win.win && cub->win.mlx)
+	{
 		mlx_destroy_display(cub->win.mlx);
-	if (cub->win.mlx)
 		free(cub->win.mlx);
+	}
 }
 
 int	exit_all(t_cub *cub)
