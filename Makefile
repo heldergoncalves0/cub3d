@@ -1,76 +1,98 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/08 17:25:02 by helferna          #+#    #+#              #
-#    Updated: 2024/09/11 17:06:02 by helferna         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+# Nome do executável
+NAME = cub3D
 
-NAME  = cub3D
-OS    = $(shell uname)
-CC    = @cc
-FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
-LFT   = libft/libft.a
-INC   = -I./libft -I.mlx -I./mlx_macos -I./include
-SRC   = src/main.c src/menu.c src/bye.c src/controller.c src/mlx_helper.c src/player_move.c \
+# Compilador e flags de compilação
+CC = cc
+CFLAGS = -Werror -Wall -Wextra #-fsanitize=address -g
+#
+#-Werror -Wall -Wextra 
+#-fsanitize=address
+#-fsanitize=address
+#-fsanitize=address
+# 
+
+# Bibliotecas e flags de ligação
+LFLAGS = -lm -lbsd
+
+# Diretório da MiniLibX
+MLXDIR = mlx_linux
+
+# Diretório da Libft
+LIBFTDIR = libft
+
+# Detecção do sistema operacional
+UNAME := $(shell uname -s)
+ifeq ($(UNAME), Linux)
+    MLX_NAME = libmlx_Linux.a
+    LFLAGS += -L$(MLXDIR) -lmlx_Linux -lXext -lX11
+endif
+
+# Diretórios e arquivos fonte
+OBJDIR = obj
+SRCDIR = src/
+INCDIR = include
+
+# Lista de arquivos fonte
+#SRCS = $(SRCDIR)/plot.c $(SRCDIR)/vec3.c $(SRCDIR)/safe_functions.c
+
+# Lista de arquivos fonte usando wildcard para pegar todos os .c em src
+SRCS   = src/main.c src/menu.c src/bye.c src/controller.c src/mlx_helper.c src/player_move.c \
         src/player.c src/render_2d.c src/render_3d.c src/init.c src/parsing/parser.c \
 		src/parsing/parse_configs.c src/parsing/parse_map.c src/parsing/parse_map_utils.c \
 		src/parsing/parse_configs_utils.c src/parsing/parse_configs_textures.c \
 		src/parsing/parse_configs_line.c src/parsing/parse_configs_colors.c \
-		src/raycasting/raycast.c src/raycasting/helpers.c 
-OBJ   = $(patsubst src/%.c, obj/%.o, $(SRC))
+		src/raycasting/raycast.c src/raycasting/helpers.c
 
-ifeq ($(OS), Darwin)
-	MLX = ./mlx_macos/libmlx.a
-	INC_MLX = mlx_macos
-   	LIB = -L./libft -lft -L./mlx_macos -lmlx -framework OpenGL -framework AppKit
-else
-	MLX = /mlx_linux/libmlx.a
-	INC_MLX = mlx_linux
-	LIB = -L./libft -lft -L./mlx_linux -lmlx -lXext -lX11
-endif
+# Lista de objetos a serem gerados
+OBJS = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
 
-all: $(MLX) $(LFT) obj $(NAME)
+# Diretórios adicionais de includes e bibliotecas
+INCLUDES = -I$(MLXDIR) -I$(INCDIR) -I$(LIBFTDIR)
 
-$(NAME): $(OBJ)
-	@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling $(NAME)..."
-	$(CC) $(FLAGS) -o $@ $^ $(LIB) -lm
-	@echo "[" "$(GREEN)OK$(RESET)" "] | $(NAME) ready!"
+# Cores para indicar fases do processo
+COLOR_RESET = \033[0m
+COLOR_INFO = \033[38;5;46m
+COLOR_SUCCESS = \033[38;5;82m
+COLOR_CLEAN = \033[38;5;208m
 
-$(MLX):
-	@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling minilibx..."
-	@make -sC $(INC_MLX) > /dev/null 2>&1
-	@echo "[" "$(GREEN)OK$(RESET)" "] | Minilibx ready!"
+# Alvo padrão: compilar o executável
+all: $(NAME)
+	@echo "$(COLOR_SUCCESS)Compilação concluída com sucesso!$(COLOR_RESET)"
+	@echo "$(COLOR_INFO)Executável: ./$(NAME)$(COLOR_RESET)"
 
-$(LFT):
-	@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling libft..."
-	@make -sC libft
-	@echo "[" "$(GREEN)OK$(RESET)" "] | Libft ready!"
+# Regra para compilar o executável
+$(NAME): $(OBJS) $(LIBFTDIR)/libft.a
+	@echo "$(COLOR_INFO)Compilando $(NAME)...$(COLOR_RESET)"
+	$(CC) $(CFLAGS) $(OBJS) $(LFLAGS) -L$(LIBFTDIR) -lft -o $(NAME)
 
-obj:
-	@mkdir -p obj
+# Regra para compilar arquivos fonte em objetos
+$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
+	@echo "$(COLOR_INFO)Compilando $<...$(COLOR_RESET)"
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-obj/%.o: src/%.c
-	@mkdir -p $(dir $@)
-	$(CC) $(FLAGS) $(INC) -c $< -o $@
+# Criação do diretório de objetos
+$(OBJDIR):
+	@mkdir -p $(OBJDIR)
+	@echo "$(COLOR_INFO)Criando diretório de objetos: $(OBJDIR)$(COLOR_RESET)"
 
+# Regra para compilar a libft
+$(LIBFTDIR)/libft.a:
+	@echo "$(COLOR_INFO)Compilando libft...$(COLOR_RESET)"
+	$(MAKE) -C $(LIBFTDIR)
+
+# Alvo de limpeza: remove arquivos objeto
 clean:
-	@echo "[" "$(YELLOW)..$(RESET)" "] | Removing object files...$(RESET)"
-	@make -sC libft clean
-	@make -sC $(INC_MLX) clean > /dev/null
-	@rm -rf $(OBJ) obj
-	@echo "[" "$(GREEN)OK$(RESET)" "] | Object files removed."
+	@$(RM) -r $(OBJDIR)
+	@$(MAKE) -C $(LIBFTDIR) clean
 
+# Alvo de limpeza completa: remove arquivos temporários, objetos e o executável
 fclean: clean
-	@echo "[" "$(YELLOW)..$(RESET)" "] | Removing binary files...$(RESET)"
-	@make -sC libft fclean
-	@rm -rf $(NAME)
-	@echo "[" "$(GREEN)OK$(RESET)" "] | Binary file removed."
+	@echo "$(COLOR_CLEAN)Limpando tudo...$(COLOR_RESET)"
+	@$(RM) $(NAME)
+	@$(MAKE) -C $(LIBFTDIR) fclean
 
+# Alvo de reconstrução completa: limpa tudo e reconstrói o executável
 re: fclean all
 
-.PHONY: all
+# Indica que estes alvos não correspondem a arquivos reais
+.PHONY: all clean fclean re

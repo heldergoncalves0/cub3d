@@ -6,7 +6,7 @@
 /*   By: rprocopi <mailto:rprocopi@student.42lis    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:38:54 by helferna          #+#    #+#             */
-/*   Updated: 2024/09/11 19:52:00 by rprocopi         ###   ########.fr       */
+/*   Updated: 2024/09/12 09:14:43 by rprocopi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,10 @@ t_controller	*init_controller(t_cub *cub)
 		printf("Error: Failed to allocate controller.\n");
 		return (NULL);
 	}
-	*ctrl = (t_controller){.mv_fw = false, .mv_bw = false, .mv_lf = false, \
-	.mv_rt = false, .rt_lf = false, .rt_rt = false, .game_over = false, \
-	.mini_map = false, .speed = 1, .menu = 1};
+	*ctrl = (t_controller){.mv_fw = false, .mv_bw = false, .mv_lf = false};
+	*ctrl = (t_controller){.mv_rt = false, .rt_lf = false, .rt_rt = false};
+	*ctrl = (t_controller){.game_over = false, .mini_map = false, .speed = 1};
+	*ctrl = (t_controller){.menu = 1};
 	mlx_hook(cub->win.win, 2, (1L << 0), &key_press, cub);
 	mlx_hook(cub->win.win, 3, (1L << 1), &key_release, cub);
 	mlx_hook(cub->win.win, 17, 0L, &exit_all, cub);
