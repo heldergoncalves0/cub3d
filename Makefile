@@ -1,15 +1,21 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: helferna <helferna@student.42lisboa.com    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/09/12 11:21:41 by helferna          #+#    #+#              #
+#    Updated: 2024/09/12 11:21:43 by helferna         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 # Nome do executável
 NAME = cub3D
 
 # Compilador e flags de compilação
 CC = cc
 CFLAGS = -Werror -Wall -Wextra #-fsanitize=address -g
-#
-#-Werror -Wall -Wextra 
-#-fsanitize=address
-#-fsanitize=address
-#-fsanitize=address
-# 
 
 # Bibliotecas e flags de ligação
 LFLAGS = -lm -lbsd
